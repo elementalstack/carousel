@@ -1,0 +1,7 @@
+node_modules/
+.storybook/
+.eslintrc.js
+config/
+scripts/
+ commitlint.config.js
+ **/*.config.{js,ts}
