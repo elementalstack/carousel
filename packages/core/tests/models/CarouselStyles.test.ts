@@ -15,11 +15,11 @@ function makeSut(
   positions?: number[],
   trackProps: ITrackProps = { width: 300 }
 ) {
-  const carouselStateMock = new CarouselStateStub(positions);
+  const carouselStateStub = new CarouselStateStub(positions);
 
-  const sut = new CarouselStyles(carouselStateMock, trackProps);
+  const sut = new CarouselStyles(carouselStateStub, trackProps);
 
-  return { sut, state: carouselStateMock };
+  return { sut, state: carouselStateStub };
 }
 
 describe('CarouselStyles', () => {
