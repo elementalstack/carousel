@@ -16,6 +16,6 @@
       "noEmit": true,
       "jsx": "react-jsx"
     },
-    "include": ["src/**/*", "stories/**/*", "commitlint.config.js", "packages", "@types"],
-    "exclude": ["node_modules", "dist", "examples", "scripts"],
+    "include": ["src/**/*", "stories/**/*", "commitlint.config.js", "packages", "@types", "scripts"],
+    "exclude": ["node_modules", "dist", "examples"],
   }
