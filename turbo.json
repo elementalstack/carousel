@@ -8,6 +8,10 @@
     },
     "lint": {
       "outputs": []
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false
     }
   },
   "globalDependencies": ["tsconfig.json"]
