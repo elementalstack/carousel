@@ -8,6 +8,7 @@
     "story": "node scripts/storybook.js",
     "commit": "cz",
     "release": "tsx scripts/release.ts",
+    "changeset": "tsx scripts/changeset.ts",
     "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\" \"stories/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --cache --fix \"src/**/*.{js,jsx,ts,tsx}\" \"stories/**/*.{js,jsx,ts,tsx}\""
   },
@@ -29,6 +30,7 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@faker-js/faker": "^7.6.0",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
@@ -61,6 +63,7 @@
     "inquirer-table-prompt": "^0.2.1",
     "jsdom": "^20.0.3",
     "prettier": "^2.8.0",
+    "release-it": "^15.9.0",
     "tsup": "^6.6.3",
     "tsx": "^3.12.5",
     "turbo": "^1.6.3",
