@@ -27,7 +27,6 @@ export interface IItemStyle {
 export interface ICarouselStyles {
   getSliderStyle: () => ISliderStyle;
   getTrackStyle: () => ITrackStyle;
-
   getItemStyle: () => IItemStyle;
 }
 
@@ -47,10 +46,12 @@ class CarouselStyles implements ICarouselStyles {
   getTrackStyle() {
     const { currentIndex, positions } = this._carouselState;
 
+    const position = positions[currentIndex] ?? 0;
+
     return {
       ...trackDefaultStyle,
-      transform: `translateX(-${positions[currentIndex]}px)`,
-      transition: '500ms',
+      transform: `translateX(-${position}px)`,
+      transition: 'transform 500ms',
     };
   }
 
