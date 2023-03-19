@@ -3,7 +3,7 @@ import path from 'path'
 import {fileDirName} from './fileDirName';
 import { faker } from '@faker-js/faker'
 
-export function createChangeset(pkgs) {
+export function createChangeset(pkgs: Record<string, string>) {
   const { __dirname } = fileDirName(import.meta);
   const changesetFolderPath = path.resolve(__dirname, path.relative(__dirname, '.changeset'));
 
