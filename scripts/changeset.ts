@@ -1,13 +1,13 @@
 import inquirer from 'inquirer';
 import InquirerTable from 'inquirer-table-prompt'
-import { createChangeset, createTableConfig, getPackageNames } from './utils';
+import { createChangeset, createChangesetQuestions, getPackageNames } from './utils';
 
 inquirer.registerPrompt("table", InquirerTable);
 
 const packageNames = getPackageNames();
-const tableConfig = createTableConfig(packageNames);
+const changesetQuestions = createChangesetQuestions(packageNames);
 
-const { packages } = await inquirer.prompt(tableConfig as any);
+const { packages } = await inquirer.prompt(changesetQuestions as any);
 
 let changedPkgs: Record<string, string> = {};
 

@@ -1,7 +1,7 @@
 const config = {
   type: "table",
   name: "packages",
-  message: "Choose your workout plan for next week",
+  message: "Choose changed package and  a version to upgrade",
 }
 
 const columns = [
@@ -23,7 +23,7 @@ const columns = [
   }
 ]
 
-export function createTableConfig(packageNames: string[]) {
+export function createChangesetQuestions(packageNames: string[]) {
 
   const rows = packageNames.map((name, index) => ({
     name,
