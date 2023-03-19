@@ -1,6 +1,7 @@
 {
   "namespace": "@elementalstack",
   "description": "The best way to create a react and react native carousel",
+  "type": "module",
   "scripts": {
     "build": "turbo run build --force",
     "test": "vitest",
