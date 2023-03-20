@@ -1,7 +1,7 @@
 const config = {
   type: "table",
   name: "packages",
-  message: "Choose changed package and  a version to upgrade",
+  message: "Choose the package and the desired version to update",
 }
 
 const columns = [
