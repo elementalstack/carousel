@@ -31,7 +31,7 @@ describe('CarouselState', () => {
 
       expect(sut.currentIndex).toBe(0);
 
-      sut.currentIndex = 4;
+      sut.currentIndex = 3;
       expect(sut.currentIndex).toBe(0);
 
       sut.currentIndex = -1;
