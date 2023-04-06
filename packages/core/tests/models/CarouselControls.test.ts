@@ -47,22 +47,24 @@ describe('CarouselControls', () => {
     });
   });
 
-  it('Should update currentIndex correctly', () => {
-    const { sut, state } = makeSut();
+  describe('Integration tests', () => {
+    it('Should update currentIndex correctly', () => {
+      const { sut, state } = makeSut();
 
-    sut.goToNextItem();
-    expect(state.currentIndex).toBe(1);
+      sut.goToNextItem();
+      expect(state.currentIndex).toBe(1);
 
-    sut.goToPrevItem();
-    expect(state.currentIndex).toBe(0);
+      sut.goToPrevItem();
+      expect(state.currentIndex).toBe(0);
 
-    sut.goToIndex(2);
-    expect(state.currentIndex).toBe(2);
+      sut.goToIndex(2);
+      expect(state.currentIndex).toBe(2);
 
-    sut.goToNextItem();
-    expect(state.currentIndex).toBe(3);
+      sut.goToNextItem();
+      expect(state.currentIndex).toBe(3);
 
-    sut.goToPrevItem();
-    expect(state.currentIndex).toBe(2);
+      sut.goToPrevItem();
+      expect(state.currentIndex).toBe(2);
+    });
   });
 });
