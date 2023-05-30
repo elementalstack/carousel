@@ -1,7 +1,6 @@
 {
   "namespace": "@elementalstack",
   "description": "The best way to create a react and react native carousel",
-  "type": "module",
   "scripts": {
     "build": "turbo run build --force",
     "test": "vitest",
@@ -11,7 +10,8 @@
     "release": "tsx scripts/release.ts",
     "changeset": "tsx scripts/changeset.ts",
     "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\" \"stories/**/*.{js,jsx,ts,tsx}\"",
-    "lint:fix": "eslint --cache --fix \"src/**/*.{js,jsx,ts,tsx}\" \"stories/**/*.{js,jsx,ts,tsx}\""
+    "lint:fix": "eslint --cache --fix \"src/**/*.{js,jsx,ts,tsx}\" \"stories/**/*.{js,jsx,ts,tsx}\"",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,6 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.20.2",
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
     "@faker-js/faker": "^7.6.0",
     "@release-it/conventional-changelog": "^5.1.1",
     "@storybook/addon-actions": "^6.5.16",
@@ -46,8 +44,6 @@
     "@typescript-eslint/parser": "^5.44.0",
     "@vitejs/plugin-react": "^2.2.0",
     "babel-loader": "^8.3.0",
-    "commitizen": "^4.2.5",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-semistandard": "^17.0.0",
@@ -60,6 +56,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "framer-motion": "^7.6.12",
+    "git-commit-msg-linter": "^5.0.4",
+    "husky": "^8.0.0",
     "inquirer": "^9.1.5",
     "inquirer-table-prompt": "^0.2.1",
     "jsdom": "^20.0.3",
@@ -71,10 +69,5 @@
     "typescript": "^4.9.3",
     "vite": "^3.2.4",
     "vitest": "^0.25.3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
