@@ -1,10 +1,7 @@
 import { vi } from 'vitest';
-import {
-  Carousel,
-  ICarouselItem,
-  ITrackProps,
-} from '../../src/models/Carousel';
+import { Carousel, ICarouselItem, ITrackProps } from '../../src';
 import CarouselState from '../../src/models/CarouselState';
+import CarouselStyles from '../../src/models/CarouselStyles';
 
 function makeSut(
   items: ICarouselItem[] = [],
@@ -14,6 +11,7 @@ function makeSut(
 }
 
 vi.mock('../../src/models/CarouselState');
+vi.mock('../../src/models/CarouselStyles');
 
 describe('Carousel', () => {
   afterEach(() => {
@@ -40,6 +38,24 @@ describe('Carousel', () => {
       makeSut(items, { width });
 
       expect(CarouselState).toHaveBeenCalledWith([0, 100, 200]);
+    });
+  });
+
+  describe('styles', () => {
+    it('Should be instance of CarouselStyles', () => {
+      const carousel = makeSut();
+
+      expect(carousel.styles).toBeInstanceOf(CarouselStyles);
+    });
+
+    it('Should instantiate CarouselStyles with correct arguments', () => {
+      const items = [{ child: () => '' }, { child: () => '' }];
+
+      const trackProps = { width: 200 };
+
+      const carousel = makeSut(items, trackProps);
+
+      expect(CarouselStyles).toHaveBeenCalledWith(carousel.state, trackProps);
     });
   });
 });
