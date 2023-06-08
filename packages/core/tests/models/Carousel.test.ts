@@ -77,4 +77,14 @@ describe('Carousel', () => {
       expect(CarouselControls).toHaveBeenCalledWith(expect.any(CarouselState));
     });
   });
+
+  describe('items', () => {
+    it('Should be initiate with correct value', () => {
+      const items = [{ child: () => '' }];
+
+      const carousel = makeSut(items);
+
+      expect(carousel.items).toStrictEqual(items);
+    });
+  });
 });
