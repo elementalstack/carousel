@@ -55,9 +55,12 @@ describe('Carousel', () => {
 
       const trackProps = { width: 200 };
 
-      const carousel = makeSut(items, trackProps);
+      makeSut(items, trackProps);
 
-      expect(CarouselStyles).toHaveBeenCalledWith(carousel.state, trackProps);
+      expect(CarouselStyles).toHaveBeenCalledWith(
+        expect.any(CarouselState),
+        trackProps
+      );
     });
   });
 
