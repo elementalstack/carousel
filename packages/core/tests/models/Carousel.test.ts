@@ -51,11 +51,9 @@ describe('Carousel', () => {
     });
 
     it('Should instantiate CarouselStyles with correct arguments', () => {
-      const items = [{ child: () => '' }, { child: () => '' }];
-
       const trackProps = { width: 200 };
 
-      makeSut(items, trackProps);
+      makeSut([{ child: () => '' }, { child: () => '' }], { ...trackProps });
 
       expect(CarouselStyles).toHaveBeenCalledWith(
         expect.any(CarouselState),
@@ -82,7 +80,7 @@ describe('Carousel', () => {
     it('Should be initiate with correct value', () => {
       const items = [{ child: () => '' }];
 
-      const carousel = makeSut(items);
+      const carousel = makeSut([...items]);
 
       expect(carousel.items).toStrictEqual(items);
     });
