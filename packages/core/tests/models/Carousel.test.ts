@@ -85,4 +85,16 @@ describe('Carousel', () => {
       expect(carousel.items).toStrictEqual(items);
     });
   });
+
+  describe('trackProps', () => {
+    it('Should be initiate with correct value', () => {
+      const trackProps = {
+        width: 800,
+      };
+
+      const carousel = makeSut([{ child: () => '' }], { ...trackProps });
+
+      expect(carousel.trackProps).toStrictEqual(trackProps);
+    });
+  });
 });
