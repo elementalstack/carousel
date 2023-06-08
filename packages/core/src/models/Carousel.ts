@@ -38,7 +38,7 @@ export class Carousel implements ICarousel {
   private _items: ICarouselItem[] = [];
   private readonly _carouselState: ICarouselState;
   private readonly _carouselControls: ICarouselControls;
-  private readonly _carouselStyle: ICarouselStyles;
+  private readonly _carouselStyles: ICarouselStyles;
 
   onStateChange?: (state: ICarouselState) => void;
 
@@ -63,7 +63,7 @@ export class Carousel implements ICarousel {
     );
 
     this._carouselControls = new CarouselControls(this._carouselState);
-    this._carouselStyle = new CarouselStyles(this._carouselState, trackProps);
+    this._carouselStyles = new CarouselStyles(this._carouselState, trackProps);
 
     this.trackProps = trackProps;
   }
@@ -81,6 +81,6 @@ export class Carousel implements ICarousel {
   }
 
   get styles() {
-    return this._carouselStyle;
+    return this._carouselStyles;
   }
 }
