@@ -3,8 +3,7 @@
   "description": "The best way to create a react and react native carousel",
   "scripts": {
     "build": "turbo run build --force",
-    "test": "vitest",
-    "test:cov": "vitest run --coverage",
+    "test": "turbo run test",
     "story": "node scripts/storybook.js",
     "commit": "cz",
     "release": "tsx scripts/release.ts",
@@ -43,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/coverage-c8": "^0.32.0",
     "babel-loader": "^8.3.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
