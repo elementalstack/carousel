@@ -1,6 +1,5 @@
-import { ITrackProps } from '../../src/models/Carousel';
-import { ICarouselState } from '../../src/models/CarouselState';
-import CarouselStyles from '../../src/models/CarouselStyles';
+import { ICarouselState, ITrackProps } from '../../src';
+import { CarouselStyles } from '../../src/carouselModules';
 
 class CarouselStateStub implements ICarouselState {
   positions: number[] = [];

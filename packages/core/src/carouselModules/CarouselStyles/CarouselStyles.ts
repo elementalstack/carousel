@@ -1,10 +1,10 @@
+import { ITrackProps } from '../../types';
+import { ICarouselState } from '../CarouselState';
 import {
   itemDefaultStyle,
   sliderDefaultStyle,
   trackDefaultStyle,
-} from '../styles/default';
-import { ITrackProps } from './Carousel';
-import { ICarouselState } from './CarouselState';
+} from './styles';
 
 export interface ISliderStyle {
   overflowX: 'hidden';
@@ -32,7 +32,7 @@ export interface ICarouselStyles {
 
 class CarouselStyles implements ICarouselStyles {
   private readonly _carouselState: ICarouselState;
-  private _trackProps: ITrackProps;
+  private readonly _trackProps: ITrackProps;
 
   constructor(carouselState: ICarouselState, trackProps: ITrackProps) {
     this._carouselState = carouselState;
