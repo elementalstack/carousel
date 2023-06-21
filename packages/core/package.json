@@ -9,6 +9,7 @@
     "build:cjs": "tsup --config tsup.config.cjs.ts",
     "build:esm": "tsup  --config tsup.config.esm.ts",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:watch": "vitest"
   }
 }

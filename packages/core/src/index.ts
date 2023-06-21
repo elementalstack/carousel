@@ -1,10 +1,16 @@
-export * from './models/Carousel';
-export type { ICarouselControls } from './models/CarouselControls';
-export type { ICarouselState } from './models/CarouselState';
+export * from './Carousel';
+export {
+  itemDefaultStyle,
+  sliderDefaultStyle,
+  trackDefaultStyle,
+} from './carouselModules';
 export type {
-  ITrackStyle,
+  ICarouselControls,
+  ICarouselState,
   ICarouselStyles,
+  ICarouselValidators,
   IItemStyle,
   ISliderStyle,
-} from './models/CarouselStyles';
-export * from './styles/default';
+  ITrackStyle,
+} from './carouselModules';
+export type { ICarousel, ICarouselItem, ITrackProps } from './types';
