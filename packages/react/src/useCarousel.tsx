@@ -1,5 +1,6 @@
 import React, {
   ReactNode,
+  SetStateAction,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -15,7 +16,7 @@ import {
   trackDefaultStyle,
 } from '@elementalstack/core';
 
-interface ICarouselItems {
+export interface ICarouselItem {
   /**
    * Function to rendering a React component.
    * @returns React.ReactNode
@@ -23,14 +24,14 @@ interface ICarouselItems {
   child: () => ReactNode;
 }
 
-interface IUseCarousel {
+export interface IUseCarouselOptions {
   /**
    * Property to receive a items collection.
    */
-  items: ICarouselItems[];
+  items: ICarouselItem[];
 }
 
-interface IReturnItem {
+export interface IReturnItem {
   /**
    * Property to define a unique identity for an item.
    */
@@ -45,13 +46,13 @@ interface IReturnItem {
   };
 }
 
-interface ITrackStyle
+export interface ITrackStyle
   extends Omit<ITrackStyleCore, 'transition' | 'transform'> {
   transform?: string;
   transition?: string;
 }
 
-interface IUseCarouselReturn {
+export interface IUseCarouselReturn {
   /**
    * Property to return a processed items collections
    */
@@ -72,10 +73,15 @@ interface IUseCarouselReturn {
    */
   state: {
     /**
-     * A index for the current focus rendered item.
+     * Index for the current focus rendered item.
      */
     currentIndex: number;
+    /**
+     * Array with the position of each item in track.
+     */
+    positions: number[];
   };
+  setState: (value: SetStateAction<ICarouselState>) => void;
   /**
    * Property to contain a control methods.
    */
@@ -95,15 +101,20 @@ interface IUseCarouselReturn {
   };
 }
 
+const INITIAL_STATE: ICarouselState = {
+  currentIndex: 0,
+  positions: [],
+};
+
 /**
  * `useCarousel` is a custom hook used to generate a carousel items props and methods to help a render the carousel.
  */
-export function useCarousel(options: IUseCarousel): IUseCarouselReturn {
+export function useCarousel(options: IUseCarouselOptions): IUseCarouselReturn {
   const trackRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<Carousel | null>(null);
 
   const [data, setData] = useState<IReturnItem[]>([]);
-  const [state, setState] = useState<ICarouselState>({} as ICarouselState);
+  const [state, setState] = useState<ICarouselState>(INITIAL_STATE);
 
   const triggers = {
     goToNextItem: () => carouselRef.current?.controls.goToNextItem(),
@@ -117,6 +128,8 @@ export function useCarousel(options: IUseCarousel): IUseCarouselReturn {
       carouselRef.current = new Carousel(options.items, {
         width: trackRef.current.clientWidth,
       });
+
+      setState({ ...carouselRef.current.state });
 
       carouselRef.current.onStateChange = function (state) {
         setState({ ...state });
@@ -145,11 +158,24 @@ export function useCarousel(options: IUseCarousel): IUseCarouselReturn {
     setData(newData);
   }, [options.items]);
 
-  function typedGetProps<TRef extends HTMLElement>() {
+  function getTrackProps<TRef extends HTMLElement>() {
     return {
       ref: trackRef as React.RefObject<TRef>,
       style: carouselRef.current?.styles.getTrackStyle() ?? trackDefaultStyle,
     };
+  }
+
+  function handleUpdateState(updater: SetStateAction<ICarouselState>) {
+    const newState = typeof updater === 'function' ? updater(state) : updater;
+
+    if (carouselRef.current) {
+      for (const [key, value] of Object.entries(newState)) {
+        if (key in carouselRef.current.state) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          carouselRef.current.state[key as keyof ICarouselState] = value;
+        }
+      }
+    }
   }
 
   return {
@@ -160,8 +186,9 @@ export function useCarousel(options: IUseCarousel): IUseCarouselReturn {
           carouselRef.current?.styles.getSliderStyle() ?? sliderDefaultStyle,
       }),
     },
-    track: { getProps: typedGetProps },
+    track: { getProps: getTrackProps },
     state,
+    setState: handleUpdateState,
     triggers,
   };
 }

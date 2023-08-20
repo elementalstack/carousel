@@ -51,7 +51,6 @@ class CarouselStyles implements ICarouselStyles {
     return {
       ...trackDefaultStyle,
       transform: `translateX(-${position}px)`,
-      transition: 'transform 500ms',
     };
   }
 

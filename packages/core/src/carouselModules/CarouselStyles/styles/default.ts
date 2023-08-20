@@ -7,6 +7,7 @@ export const trackDefaultStyle = {
   margin: 0,
   padding: 0,
   listStyle: 'none',
+  transition: 'transform 500ms',
 } as const;
 
 export const itemDefaultStyle = {
