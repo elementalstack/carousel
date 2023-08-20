@@ -1,7 +1,8 @@
 {
-	"recommendations": [
-		"dbaeumer.vscode-eslint",
-		"EditorConfig.EditorConfig",
-		"ZixuanChen.vitest-explorer"
-	]
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig"
+  ]
 }
