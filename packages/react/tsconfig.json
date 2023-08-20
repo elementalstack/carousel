@@ -3,5 +3,9 @@
   "compilerOptions": {
     "jsx": "react-jsx"
   },
-  "include": ["src", "stories"],
+  "include": [
+    "src",
+    "stories",
+    "tests"
+  ],
 }

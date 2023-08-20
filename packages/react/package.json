@@ -9,13 +9,18 @@
     "build-storybook": "build-storybook",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsup --config tsup.config.cjs.ts",
-    "build:esm": "tsup  --config tsup.config.esm.ts"
+    "build:esm": "tsup  --config tsup.config.esm.ts",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@elementalstack/core": "*"
   },
   "devDependencies": {
     "@storybook/react": "^6.5.14",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "eslint-plugin-react": "^7.31.11",
