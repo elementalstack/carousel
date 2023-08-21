@@ -1,4 +1,7 @@
-import { sliderDefaultStyle, trackDefaultStyle } from '@elementalstack/core';
+import {
+  sliderDefaultStyle,
+  trackDefaultStyle,
+} from '@elementalstack/carousel-core';
 import { ICarouselItem, IUseCarouselReturn, useCarousel } from '../src';
 import { act, render, screen } from '@testing-library/react';
 
@@ -69,8 +72,7 @@ describe('useCarousel', () => {
           style: { ...trackDefaultStyle, transform: `translateX(-0px)` },
         });
 
-        await act(() =>
-          setState({ currentIndex: 1, positions: [300, 600, 900] })
+        act(() => setState({ currentIndex: 1, positions: [300, 600, 900] })
         );
 
         expect(track.getProps()).toStrictEqual({
@@ -111,7 +113,7 @@ describe('useCarousel', () => {
 
       const newState = { currentIndex: 1, positions: [300, 600, 900] };
 
-      await act(() => setState({ ...newState }));
+      act(() => setState({ ...newState }));
 
       expect(sut.getCarousel().state).toStrictEqual(newState);
     });
@@ -131,12 +133,11 @@ describe('useCarousel', () => {
 
       const newState = { currentIndex: 1, positions: [300, 600, 900] };
 
-      await act(() =>
-        setState((prevState) => {
-          expect(prevState).toStrictEqual({ ...state });
+      act(() => setState((prevState) => {
+        expect(prevState).toStrictEqual({ ...state });
 
-          return { ...newState };
-        })
+        return { ...newState };
+      })
       );
 
       expect(sut.getCarousel().state).toStrictEqual(newState);
@@ -159,7 +160,7 @@ describe('useCarousel', () => {
           positions: [0, 0, 0],
         });
 
-        await act(() => {
+        act(() => {
           triggers.goToNextItem();
         });
 
@@ -181,7 +182,7 @@ describe('useCarousel', () => {
 
         expect(state).toStrictEqual(expectedState);
 
-        await act(() => {
+        act(() => {
           triggers.goToNextItem();
         });
 
@@ -197,7 +198,7 @@ describe('useCarousel', () => {
 
         const { setState } = sut.getCarousel();
 
-        await act(() => {
+        act(() => {
           setState((prev) => ({ ...prev, currentIndex: 1 }));
         });
 
@@ -208,7 +209,7 @@ describe('useCarousel', () => {
           positions: [0, 0],
         });
 
-        await act(() => {
+        act(() => {
           triggers.goToPrevItem();
         });
 
@@ -230,7 +231,7 @@ describe('useCarousel', () => {
 
         expect(state).toStrictEqual(expectedState);
 
-        await act(() => {
+        act(() => {
           triggers.goToPrevItem();
         });
 
@@ -251,7 +252,7 @@ describe('useCarousel', () => {
           positions: [0, 0],
         });
 
-        await act(() => {
+        act(() => {
           triggers.goToIndex(1);
         });
 
@@ -273,7 +274,7 @@ describe('useCarousel', () => {
 
         expect(state).toStrictEqual(expectedState);
 
-        await act(() => {
+        act(() => {
           triggers.goToIndex(2);
         });
 

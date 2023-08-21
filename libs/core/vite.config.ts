@@ -46,6 +46,9 @@ export default defineConfig({
     cache: {
       dir: '../../node_modules/.vitest',
     },
+    coverage: {
+      provider: 'v8',
+    },
     environment: 'node',
     include: ['./**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },

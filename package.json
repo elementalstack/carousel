@@ -54,9 +54,9 @@
     "@types/react-dom": "18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
-    "@vitejs/plugin-react": "~4.0.0",
-    "@vitest/coverage-c8": "~0.32.0",
-    "@vitest/ui": "~0.32.0",
+    "@vitejs/plugin-react": "~4.0.4",
+    "@vitest/coverage-c8": "~0.33.0",
+    "@vitest/ui": "~0.34.2",
     "cypress": "^12.16.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
@@ -74,9 +74,9 @@
     "tslib": "^2.6.1",
     "typescript": "~5.1.3",
     "verdaccio": "^5.0.4",
-    "vite": "~4.3.9",
+    "vite": "~4.4.9",
     "vite-plugin-dts": "~2.3.0",
-    "vitest": "~0.32.0"
+    "vitest": "~0.34.2"
   },
   "nx": {
     "includedScripts": []
