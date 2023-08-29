@@ -72,6 +72,12 @@
           "buildTarget": "react:build-storybook:ci"
         }
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
     }
   },
   "tags": []

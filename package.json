@@ -26,7 +26,10 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
     "@docusaurus/module-type-aliases": "2.1.0",
+    "@jscutlery/semver": "^3.1.0",
     "@nx-plus/docusaurus": "15.0.0-rc.0",
     "@nx/cypress": "16.6.0",
     "@nx/eslint-plugin": "16.6.0",
