@@ -50,6 +50,7 @@ specifiers:
   git-commit-msg-linter: ^5.0.4
   husky: ^8.0.3
   jsdom: ~22.1.0
+  ngx-deploy-npm: ^7.0.1
   nx: 16.6.0
   prettier: ^2.6.2
   prism-react-renderer: ^1.3.5
@@ -118,6 +119,7 @@ devDependencies:
   git-commit-msg-linter: 5.0.4
   husky: 8.0.3
   jsdom: 22.1.0
+  ngx-deploy-npm: 7.0.1_sdmlhkcgbhw2pthekvmohukhgu
   nx: 16.6.0_@swc+core@1.3.76
   prettier: 2.8.8
   ts-node: 10.9.1_72bxrofgpy4fh6sec67ipygsxq
@@ -14233,6 +14235,17 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  /ngx-deploy-npm/7.0.1_sdmlhkcgbhw2pthekvmohukhgu:
+    resolution: {integrity: sha512-YQmYx8ZxnhsGdpLMocIsmvVdV/bnsPNNOZALjJxNyfYomLpJ+OIlMPCVUM3QWA7Lxw8P9GZ+yITeavoBInEkBA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@nx/devkit': ^16.0.0
+      tslib: ^2.3.0
+    dependencies:
+      '@nx/devkit': 16.6.0_nx@16.6.0
+      tslib: 2.6.1
+    dev: true
 
   /no-case/3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}

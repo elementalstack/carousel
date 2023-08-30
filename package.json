@@ -71,6 +71,7 @@
     "git-commit-msg-linter": "^5.0.4",
     "husky": "^8.0.3",
     "jsdom": "~22.1.0",
+    "ngx-deploy-npm": "^7.0.1",
     "nx": "16.6.0",
     "prettier": "^2.6.2",
     "ts-node": "10.9.1",

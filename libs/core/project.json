@@ -33,7 +33,28 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventional"
+        "preset": "conventional",
+        "postTargets": ["core:npm", "core:github"]
+      },
+      "configurations": {
+        "alpha": {
+          "releaseAs": "prerelease",
+          "preid": "alpha"
+        }
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notes": "${notes}"
+      }
+    },
+    "npm": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public",
+        "tag": "alpha"
       }
     }
   },
