@@ -1,51 +1,40 @@
-name: release
+name: Release
 
 on:
   - workflow_dispatch
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node_version: [16]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          node_version: ${{ matrix.node_version }}
+          git_bot_token: ${{ secrets.GIT_BOT_TOKEN }}
+
   release:
     runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/main'
+
+    needs: [test]
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Setup
+        uses: ./.github/actions/setup
         with:
-          fetch-depth: 0
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+          git_bot_token: ${{ secrets.GIT_BOT_TOKEN }}
+
+      - name: Release
+        uses: ./.github/actions/release
         with:
-          node-version: '16'
-      - name: Setup Git
-        run: |
-          git config user.name "GitHub Bot"
-          git config user.email "gituser@example.com"
-
-      - uses: pnpm/action-setup@v2
-        name: pnpm setup
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - run: pnpm i --frozen-lockfile
-      - name: Version
-        shell: bash
-        run: pnpm nx affected --base=last-release --target=version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Tag last-release
-        shell: bash
-        run: |
-          git tag -f last-release
-          git push origin last-release --force
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          npm_token: ${{ secrets.NPM_TOKEN }}
