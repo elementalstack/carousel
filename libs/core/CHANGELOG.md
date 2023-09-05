@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.2-alpha.2](https://github.com/elementalstack/carousel/compare/core-0.0.2-alpha.1...core-0.0.2-alpha.2) (2023-09-05)
+
 ## [0.0.2-alpha.1](https://github.com/elementalstack/carousel/compare/core-0.0.2-alpha.0...core-0.0.2-alpha.1) (2023-09-05)
 
 ## [0.0.2-alpha.0](https://github.com/elementalstack/carousel/compare/core-0.0.1...core-0.0.2-alpha.0) (2023-08-31)
