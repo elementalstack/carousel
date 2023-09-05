@@ -48,10 +48,11 @@ runs:
 
     - uses: actions/cache@v3
       name: Setup pnpm cache
+
       with:
         path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
-      shell: bash
+
     - run: pnpm i --frozen-lockfile
