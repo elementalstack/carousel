@@ -20,7 +20,7 @@ jobs:
           git config user.email "gituser@example.com"
 
         - uses: pnpm/action-setup@v2
-        name: Install pnpm
+        name: pnpm setup
         with:
           version: 7
           run_install: false
