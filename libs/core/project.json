@@ -35,7 +35,7 @@
       "options": {
         "preset": "conventional",
         "push": true,
-        "postTargets": ["core:npm", "core:github"]
+        "postTargets": ["core:github"]
       },
       "configurations": {
         "alpha": {
