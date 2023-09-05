@@ -35,10 +35,6 @@ runs:
         # and sets the NPM_CONFIG_USERCONFIG environment variable.
         registry-url: https://registry.npmjs.org
 
-    - name: yarn install
-      shell: bash
-      run: yarn install --immutable --immutable-cache
-
     - uses: pnpm/action-setup@v2
       name: pnpm setup
       with:
