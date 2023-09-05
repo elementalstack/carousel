@@ -46,13 +46,13 @@ runs:
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
-
+    - name: Setup pnpm cache
+      uses: actions/cache@v3
       with:
         path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
-
-    - run: pnpm i --frozen-lockfile
+    - name: Install deps
+      shell: bash
+      run: pnpm i --frozen-lockfile
