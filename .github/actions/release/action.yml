@@ -3,6 +3,8 @@ name: Release
 inputs:
   github_token:
     required: true
+  npm_token:
+    required: true
 
 runs:
   using: composite
@@ -18,10 +20,11 @@ runs:
       shell: bash
 
     - name: Version
-      run: pnpm nx affected --base=last-release --target=version
-      shell: bash
       env:
+        NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
+      run: pnpm exec nx affected --base=last-release --target=version
+      shell: bash
 
     - name: Tag last-release
       run: |
