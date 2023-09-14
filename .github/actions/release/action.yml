@@ -1,9 +1,13 @@
 name: Release
 
+description: Release packages
+
 inputs:
   github_token:
+    description: GitHub token
     required: true
   npm_token:
+    description: NPM token
     required: true
 
 runs:
@@ -27,7 +31,7 @@ runs:
       env:
         NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
-      run: pnpm nx affected --base=last-release --target=version
+      run: pnpm nx affected -t version --base=last-release
       shell: bash
       
     - name: Tag last-release
