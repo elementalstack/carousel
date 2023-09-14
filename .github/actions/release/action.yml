@@ -22,16 +22,16 @@ runs:
     - name: Install dependencies
       run: pnpm install
       shell: bash
-      
-    - name: Tag last-release
-      run: |
-        git tag -f last-release
-        git push origin last-release --force
-      shell: bash
-      
+
     - name: Version
       env:
         NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
       run: pnpm nx affected --base=last-release --target=version
+      shell: bash
+      
+    - name: Tag last-release
+      run: |
+        git tag -f last-release
+        git push origin last-release --force
       shell: bash
