@@ -19,11 +19,15 @@ runs:
         git config user.email "gituser@example.com"
       shell: bash
 
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
+
     - name: Version
       env:
         NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
-      run: npx nx affected --base=last-release --target=version
+      run: pnpm nx affected --base=last-release --target=version
       shell: bash
 
     - name: Tag last-release
