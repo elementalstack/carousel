@@ -8,7 +8,6 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v3
-      shell: bash
       with:
         fetch-depth: 0
    
@@ -16,17 +15,19 @@ runs:
       run: |
         git config user.name "GitHub Bot"
         git config user.email "gituser@example.com"
+      shell: bash
 
     - run: pnpm i --frozen-lockfile --prod
+      shell: bash
 
     - name: Version
-      shell: bash
       run: pnpm nx affected --base=last-release --target=version
+      shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
 
     - name: Tag last-release
-      shell: bash
       run: |
         git tag -f last-release
         git push origin last-release --force
+      shell: bash
