@@ -1,9 +1,14 @@
 name: Release
 
+inputs:
+  github_token:
+    required: true
+
 runs:
   using: composite
   steps:
     - uses: actions/checkout@v3
+      shell: bash
       with:
         fetch-depth: 0
    
@@ -18,7 +23,7 @@ runs:
       shell: bash
       run: pnpm nx affected --base=last-release --target=version
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
 
     - name: Tag last-release
       shell: bash
