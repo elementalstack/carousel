@@ -1,5 +1,15 @@
 name: Release
 
+description: Release packages
+
+inputs:
+  github_token:
+    description: GitHub token
+    required: true
+  npm_token:
+    description: NPM token
+    required: true
+
 runs:
   using: composite
   steps:
@@ -11,17 +21,21 @@ runs:
       run: |
         git config user.name "GitHub Bot"
         git config user.email "gituser@example.com"
+      shell: bash
 
-    - run: pnpm i --frozen-lockfile --prod
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
 
     - name: Version
-      shell: bash
-      run: pnpm nx affected --base=last-release --target=version
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Tag last-release
+        NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      run: pnpm nx affected -t version base=last-release
       shell: bash
+      
+    - name: Tag last-release
       run: |
         git tag -f last-release
         git push origin last-release --force
+      shell: bash
